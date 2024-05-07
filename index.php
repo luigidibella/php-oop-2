@@ -3,7 +3,7 @@
 require_once __DIR__ . '/Model/Food.php';
 require_once __DIR__ . '/Model/Kennel.php';
 /* require_once __DIR__ . '/Model/Product.php'; */
-/* require_once __DIR__ . '/Model/Toy.php'; */
+require_once __DIR__ . '/Model/Toy.php';
 require_once __DIR__ . '/data/db.php';
 
 $dog_food = array_filter($products, function($product) {
@@ -25,21 +25,22 @@ $cat_food = array_filter($products, function($product) {
   <link rel="stylesheet" href="css/style.css">
   <title>php-oop-2</title>
 </head>
+
 <body>
-  <nav class="navbar fixed-top bg-body-tertiary">
+  <nav class="navbar fixed-top bg-black">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">PetShop</a>
+      <a class="navbar-brand text-warning" href="#">PetShop</a>
     </div>
   </nav>
 
-  <div class="container my-5 text-center">
+  <div class="container my-5 text-center mb-0">
 
-    <div class="container py-5">
+    <div class="container py-5 bg-body-tertiary">
       <h3>Dogs</h3>
       <div class="row row-cols-3">
         <?php foreach($dog_food as $item): ?>
-          <div class="col">
-            <div class="card">
+          <div class="col mb-3">
+            <div class="card" style="height: 500px;">
               <div>
                 <img src="<?php echo $item->img ?>" class="card-img-top" alt="Immagine" style="max-width: 250px;">
               </div>
@@ -49,7 +50,7 @@ $cat_food = array_filter($products, function($product) {
                 <p>Icona Categoria<br>
                   <?php echo $item->category->icon ?></i>
                 </p>
-                <a href="<?php echo $item->type ?>" class="btn btn-primary">Acquista</a>
+                <a href="<?php echo $item->type ?>" class="btn btn-warning">Acquista</a>
               </div>
             </div>
           </div>
@@ -57,12 +58,12 @@ $cat_food = array_filter($products, function($product) {
       </div>
     </div>
 
-    <div class="container py-5">
+    <div class="container py-5 bg-body-tertiary">
       <h3>Cats</h3>
       <div class="row row-cols-3">
         <?php foreach($cat_food as $item): ?>
-          <div class="col">
-            <div class="card">
+          <div class="col mb-3">
+            <div class="card" style="height: 500px;">
               <div>
                 <img src="<?php echo $item->img ?>" class="card-img-top" alt="Immagine" style="max-width: 250px;">
               </div>
@@ -72,17 +73,21 @@ $cat_food = array_filter($products, function($product) {
                 <p>Icona Categoria<br>
                   <?php echo $item->category->icon ?></i>
                 </p>
-                <a href="<?php echo $item->type ?>" class="btn btn-primary">Acquista</a>
+                <a href="<?php echo $item->type ?>" class="btn btn-warning">Acquista</a>
               </div>
             </div>
           </div>
         <?php endforeach; ?>
       </div>
     </div>
-
-    
   
   </div>
+
+  <footer class="bg-black">
+    <div class="text-white text-center py-2">
+      Powered by <a href="https://github.com/luigidibella">ldb</a>
+    </div>
+  </footer>
   
 </body>
 </html>
