@@ -1,7 +1,18 @@
 <?php 
-
+/* require_once __DIR__ . '/Model/Category.php'; */
+require_once __DIR__ . '/Model/Food.php';
+/* require_once __DIR__ . '/Model/Kennel.php'; */
+/* require_once __DIR__ . '/Model/Product.php'; */
+/* require_once __DIR__ . '/Model/Toy.php'; */
 require_once __DIR__ . '/data/db.php';
 
+$dog_food = array_filter($products, function($product) {
+  return $product->category->name === 'Cani';
+});
+
+$cat_food = array_filter($products, function($product) {
+  return $product->category->name === 'Gatti';
+});
 ?>
 
 <!DOCTYPE html>
@@ -26,114 +37,50 @@ require_once __DIR__ . '/data/db.php';
     <div class="container py-5">
       <h3>Dogs</h3>
       <div class="row row-cols-3">
-        <div class="col">
-          <div class="card">
-            <div>
-              <img src="https://cdn.manomano.com/images/images_products/26388425/P/96933300_1.jpg" class="card-img-top" alt="Immagine" style="max-width: 250px;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Titolo</h5>
-              <p class="card-text">Prezzo</p>
-               <p>Icona Categoria<br>
-                <i class="fa-solid fa-dog"></i>
-                <i class="fa-solid fa-cat"></i>
-              </p>
-              <a href="#" class="btn btn-primary">Tipo Articolo</a>
-            </div>
-          </div>
-        </div>
-       
-        <div class="col">
-          <div class="card">
-            <div>
-              <img src="https://cdn.manomano.com/images/images_products/26388425/P/96933300_1.jpg" class="card-img-top" alt="Immagine" style="max-width: 250px;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Titolo</h5>
-              <p class="card-text">Prezzo</p>
-               <p>Icona Categoria<br>
-                <i class="fa-solid fa-dog"></i>
-                <i class="fa-solid fa-cat"></i>
-              </p>
-              <a href="#" class="btn btn-primary">Tipo Articolo</a>
+        <?php foreach($dog_food as $item): ?>
+          <div class="col">
+            <div class="card">
+              <div>
+                <img src="<?php echo $item->img ?>" class="card-img-top" alt="Immagine" style="max-width: 250px;">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><?php echo $item->title ?></h5>
+                <p class="card-text"><?php echo $item->price ?>&euro;</p>
+                <p>Icona Categoria<br>
+                  <?php echo $item->category->icon ?></i>
+                </p>
+                <a href="<?php echo $item->type ?>" class="btn btn-primary">Acquista</a>
+              </div>
             </div>
           </div>
-        </div>
-  
-        <div class="col">
-          <div class="card">
-            <div>
-              <img src="https://cdn.manomano.com/images/images_products/26388425/P/96933300_1.jpg" class="card-img-top" alt="Immagine" style="max-width: 250px;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Titolo</h5>
-              <p class="card-text">Prezzo</p>
-               <p>Icona Categoria<br>
-                <i class="fa-solid fa-dog"></i>
-                <i class="fa-solid fa-cat"></i>
-              </p>
-              <a href="#" class="btn btn-primary">Tipo Articolo</a>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
 
     <div class="container py-5">
       <h3>Cats</h3>
       <div class="row row-cols-3">
-        <div class="col">
-          <div class="card">
-            <div>
-              <img src="https://cdn.manomano.com/images/images_products/26388425/P/96933300_1.jpg" class="card-img-top" alt="Immagine" style="max-width: 250px;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Titolo</h5>
-              <p class="card-text">Prezzo</p>
-               <p>Icona Categoria<br>
-                <i class="fa-solid fa-dog"></i>
-                <i class="fa-solid fa-cat"></i>
-              </p>
-              <a href="#" class="btn btn-primary">Tipo Articolo</a>
-            </div>
-          </div>
-        </div>
-       
-        <div class="col">
-          <div class="card">
-            <div>
-              <img src="https://cdn.manomano.com/images/images_products/26388425/P/96933300_1.jpg" class="card-img-top" alt="Immagine" style="max-width: 250px;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Titolo</h5>
-              <p class="card-text">Prezzo</p>
-               <p>Icona Categoria<br>
-                <i class="fa-solid fa-dog"></i>
-                <i class="fa-solid fa-cat"></i>
-              </p>
-              <a href="#" class="btn btn-primary">Tipo Articolo</a>
+        <?php foreach($cat_food as $item): ?>
+          <div class="col">
+            <div class="card">
+              <div>
+                <img src="<?php echo $item->img ?>" class="card-img-top" alt="Immagine" style="max-width: 250px;">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><?php echo $item->title ?></h5>
+                <p class="card-text"><?php echo $item->price ?>&euro;</p>
+                <p>Icona Categoria<br>
+                  <?php echo $item->category->icon ?></i>
+                </p>
+                <a href="<?php echo $item->type ?>" class="btn btn-primary">Acquista</a>
+              </div>
             </div>
           </div>
-        </div>
-  
-        <div class="col">
-          <div class="card">
-            <div>
-              <img src="https://cdn.manomano.com/images/images_products/26388425/P/96933300_1.jpg" class="card-img-top" alt="Immagine" style="max-width: 250px;">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Titolo</h5>
-              <p class="card-text">Prezzo</p>
-               <p>Icona Categoria<br>
-                <i class="fa-solid fa-dog"></i>
-                <i class="fa-solid fa-cat"></i>
-              </p>
-              <a href="#" class="btn btn-primary">Tipo Articolo</a>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
+
+    
   
   </div>
   

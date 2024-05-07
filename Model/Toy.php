@@ -1,5 +1,8 @@
 <?php
-class Toy extends Products
+
+require_once __DIR__ . '/Product.php';
+
+class Toy extends Product
 {
 
 }
