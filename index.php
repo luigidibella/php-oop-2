@@ -1,7 +1,7 @@
 <?php 
 /* require_once __DIR__ . '/Model/Category.php'; */
 require_once __DIR__ . '/Model/Food.php';
-/* require_once __DIR__ . '/Model/Kennel.php'; */
+require_once __DIR__ . '/Model/Kennel.php';
 /* require_once __DIR__ . '/Model/Product.php'; */
 /* require_once __DIR__ . '/Model/Toy.php'; */
 require_once __DIR__ . '/data/db.php';
