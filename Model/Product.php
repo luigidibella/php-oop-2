@@ -13,13 +13,17 @@ class Product{
   public $category;
 
   function __construct(string $_img, string $_title, float $_price, string $_type, Category $_category){
-    if ($_title == ''){
-      throw new Exception("Inserisci un titolo.");
+    try{
+      if (empty($_title) || strlen($_title) < 3){
+        throw new Exception("Prodotto senza titolo.");
+      }
+      $this->img = $_img;
+      $this->title = $_title;
+      $this->price = $_price;
+      $this->type = $_type;
+      $this->category = $_category;
+    } catch (Exception $err) {
+      echo '<script>alert("' . $err->getMessage() . '");</script>';
     }
-    $this->img = $_img;
-    $this->title = $_title;
-    $this->price = $_price;
-    $this->type = $_type;
-    $this->category = $_category;
   }
 }
