@@ -10,6 +10,9 @@ class Product{
   public $category;
 
   function __construct(string $_img, string $_title, float $_price, string $_type, Category $_category){
+    if ($_title == ''){
+      throw new Exception("Inserisci un titolo");
+    }
     $this->img = $_img;
     $this->title = $_title;
     $this->price = $_price;
